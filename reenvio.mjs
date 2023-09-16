@@ -80,7 +80,9 @@ export const handler = (data) => {
     }
 
     let send = St901Package();
+
     console.log(send + "paquete meitrack");
+    return send;
   };
   let autoleaders = () => {
     let paquete = {};
