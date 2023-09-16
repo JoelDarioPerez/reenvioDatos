@@ -1,6 +1,6 @@
 
 
-let handler = (data) => {
+const handler = (data) => {
   let newPackage = (data) => {
     let divided = data.split(",");
     let newPackage = {};
@@ -111,4 +111,3 @@ let handler = (data) => {
   } else console.log("Paquete no manejado" + data);
 };
 
-export default handler
