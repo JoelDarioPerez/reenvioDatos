@@ -80,7 +80,7 @@ export const handler = (data) => {
     }
 
     let send = St901Package(newPackage);
-
+    console.log(send);
     return send;
   };
   let autoleaders = () => {
@@ -118,9 +118,3 @@ export const handler = (data) => {
   } else console.log("Paquete no manejado" + data);
 };
 
-// Code snippet from servidor.js
-//
-//   // Procesamos los datos recibidos y obtenemos la respuesta
-//   const processedData = handler(data.toString());
-//
-//   console.log(`Datos recibidos: ${data.toString()}
