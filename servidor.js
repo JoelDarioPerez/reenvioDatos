@@ -9,8 +9,7 @@ function sendViaNetcat(data) {
   const client = net.connect(port, host, () => {
     console.log(`Conectado al servidor: ${host}:${port}`);
     // Enviamos los datos a través del socket del cliente TCP
-    /*     client.write(data);
-     */
+    client.write(data);
   });
 
   // Capturamos los datos recibidos del servidor remoto
