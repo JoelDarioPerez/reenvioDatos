@@ -39,7 +39,7 @@ function gpsTrackerServer(host, port) {
 
     clientSocket.on("data", (data) => {
       // Procesamos los datos recibidos y obtenemos la respuesta
-      const processedData = newPackage(data.toString());
+      const processedData = handler(data.toString());
 
       console.log(`Datos recibidos: ${data.toString()}`);
       // Enviamos los datos procesados a través de netcat
