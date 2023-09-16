@@ -79,7 +79,7 @@ export const handler = (data) => {
       return SendPackage.join(",");
     }
 
-    let send = St901Package();
+    let send = St901Package(newPackage);
 
     return send;
   };
