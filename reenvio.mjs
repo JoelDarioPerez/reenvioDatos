@@ -58,7 +58,7 @@ export const handler = (data) => {
 
     let speed = (newPackage) => {
       speed = (newPackage.speed / 1.852).toFixed(2);
-      return speed.toString().padStart(5, "0");
+      return speed.toString().padStart(6, "0");
     };
 
     function St901Package(newPackage) {
