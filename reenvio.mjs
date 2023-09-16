@@ -56,7 +56,7 @@ export const handler = (data) => {
       }
     }
 
-    function St901Package() {
+    function St901Package(newPackage) {
       let SendPackage = [
         "*HQ",
         newPackage.imei,
@@ -110,7 +110,11 @@ export const handler = (data) => {
       console.log(error);
     }
   } else if (data[0] === "*") {
-    autoleaders(data);
+    try {
+      autoleaders(data);
+    } catch (error) {
+      console.log(error);
+    }
   } else console.log("Paquete no manejado" + data);
 };
 
