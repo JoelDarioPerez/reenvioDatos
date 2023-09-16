@@ -56,11 +56,10 @@ export const handler = (data) => {
       }
     }
 
-    const speed = () => {
-      speed = (newPackage.speed/1.852).toFixed(2)
+    const speed = (newPackage) => {
+      speed = (newPackage.speed / 1.852).toFixed(2);
       return speed.toString().padStart(5, "0");
-    
-    }
+    };
 
     function St901Package(newPackage) {
       let SendPackage = [
@@ -69,14 +68,14 @@ export const handler = (data) => {
         "V1",
         newPackage.dateTime.substring(6, 12),
         newPackage.GPSstatus,
-        latitud(),
+        latitud(newPackage),
         newPackage.directionLat,
-        longitud(),
+        longitud(newPackage),
         newPackage.directionLong,
-        speed(),
+        speed(newPackage),
         newPackage.direction,
-        fecha(),
-        accStatus(),
+        fecha(newPackage),
+        accStatus(newPackage),
         "722",
         "310",
         "06211",
