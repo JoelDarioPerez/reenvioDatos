@@ -67,7 +67,7 @@ export const handler = (data) => {
         newPackage.directionLat,
         longitud(),
         newPackage.directionLong,
-        (newPackage.speed / 1.852).toFixed(2),
+        (newPackage.speed / 1.852).toFixed(2).padStart(3),
         newPackage.direction,
         fecha(),
         accStatus(),
