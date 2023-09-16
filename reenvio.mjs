@@ -67,7 +67,7 @@ export const handler = (data) => {
         newPackage.directionLat,
         longitud(),
         newPackage.directionLong,
-        ((newPackage.speed / 1.852).toFixed(2).padStart(3)),
+        (newPackage.speed / 1.852).padStart(3).toFixed(2),
         newPackage.direction,
         fecha(),
         accStatus(),
@@ -117,4 +117,3 @@ export const handler = (data) => {
     }
   } else console.log("Paquete no manejado" + data);
 };
-
