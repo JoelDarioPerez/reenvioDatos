@@ -48,7 +48,7 @@ export const handler = (data) => {
     }
 
     function accStatus() {
-      let portStatus = newPackage.portStatus;
+      let portStatus = newPackage.portStatus[1];
       if (portStatus === 4) {
         return "FFFFBBFF";
       } else {
