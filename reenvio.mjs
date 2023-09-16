@@ -56,7 +56,7 @@ export const handler = (data) => {
       }
     }
 
-    const speed = (newPackage) => {
+    let speed = (newPackage) => {
       speed = (newPackage.speed / 1.852).toFixed(2);
       return speed.toString().padStart(5, "0");
     };
