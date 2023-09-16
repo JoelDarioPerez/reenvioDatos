@@ -1,4 +1,4 @@
-const handler = require("./reenvio.js");
+import { handler } from "./reenvio.js";
 var net = require("net");
 // Función para enviar los datos a través de netcat
 function sendViaNetcat(data) {

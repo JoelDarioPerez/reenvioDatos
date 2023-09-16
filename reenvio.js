@@ -108,3 +108,12 @@ const handler = (data) => {
     autoleaders(data);
   } else console.log("Paquete no manejado" + data);
 };
+
+module.exports(handler);
+
+// Code snippet from servidor.js
+// 
+//   // Procesamos los datos recibidos y obtenemos la respuesta
+//   const processedData = handler(data.toString());
+// 
+//   console.log(`Datos recibidos: ${data.toString()}
