@@ -1,4 +1,4 @@
-const handler = (data) => {
+export const handler = (data) => {
   let newPackage = (data) => {
     let divided = data.split(",");
     let newPackage = {};
@@ -109,11 +109,9 @@ const handler = (data) => {
   } else console.log("Paquete no manejado" + data);
 };
 
-module.exports(handler);
-
 // Code snippet from servidor.js
-// 
+//
 //   // Procesamos los datos recibidos y obtenemos la respuesta
 //   const processedData = handler(data.toString());
-// 
+//
 //   console.log(`Datos recibidos: ${data.toString()}
