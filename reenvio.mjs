@@ -81,7 +81,6 @@ export const handler = (data) => {
 
     let send = St901Package();
 
-    console.log(send + "paquete meitrack");
     return send;
   };
   let autoleaders = () => {
@@ -105,7 +104,11 @@ export const handler = (data) => {
     return paquete;
   };
   if (data[0] === "$") {
-    newPackage(data);
+    try {
+      return newPackage(data);
+    } catch (error) {
+      console.log(error);
+    }
   } else if (data[0] === "*") {
     autoleaders(data);
   } else console.log("Paquete no manejado" + data);
