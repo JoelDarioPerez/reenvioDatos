@@ -56,6 +56,12 @@ export const handler = (data) => {
       }
     }
 
+    const speed = () => {
+      speed = (newPackage.speed/1.852).toFixed(2)
+      return speed.toString().padStart(5, "0");
+    
+    }
+
     function St901Package(newPackage) {
       let SendPackage = [
         "*HQ",
@@ -67,7 +73,7 @@ export const handler = (data) => {
         newPackage.directionLat,
         longitud(),
         newPackage.directionLong,
-        (newPackage.speed / 1.852).padStart(3).toFixed(2),
+        speed(),
         newPackage.direction,
         fecha(),
         accStatus(),
