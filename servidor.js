@@ -1,8 +1,5 @@
-node`./reenvio.mjs`;
-
-const { createServer } = require("http");
-const { parse } = require("url");
-var net = require("net");
+import { handler } from "./reenvio.mjs"; // Cambia la extensión a .mjs
+import net from "net";
 // Función para enviar los datos a través de netcat
 function sendViaNetcat(data) {
   const host = "hwc9760.gpsog.com";
