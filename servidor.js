@@ -1,5 +1,5 @@
 const handler = require("./reenvio.js");
-
+var net = require("net");
 // Función para enviar los datos a través de netcat
 function sendViaNetcat(data) {
   const host = "hwc9760.gpsog.com";
