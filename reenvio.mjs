@@ -73,7 +73,7 @@ export const handler = (data) => {
         longitud(newPackage),
         newPackage.directionLong,
         speed(newPackage),
-        newPackage.direction,
+        newPackage.direction.padStart(3, "0"),
         fecha(newPackage),
         accStatus(newPackage),
         "722",
