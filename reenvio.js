@@ -1,5 +1,3 @@
-
-
 const handler = (data) => {
   let newPackage = (data) => {
     let divided = data.split(",");
@@ -23,7 +21,7 @@ const handler = (data) => {
     newPackage.mileage = divided[14];
     newPackage.runTime = divided[15];
     newPackage.GsmInformation = divided[16];
-    newPackage.portStatus = divided[17];
+    newPackage.portStatus = divided[17][1];
     newPackage.AnalogImputs = divided[18];
 
     function longitud() {
@@ -50,11 +48,11 @@ const handler = (data) => {
     }
 
     function accStatus() {
-      let portStatus = parseInt(newPackage.portStatus, 16);
-      if (portStatus === 0) {
+      let portStatus = newPackage.portStatus;
+      if (portStatus === 4) {
         return "FFFFBBFF";
       } else {
-        return "FFFFFFFF";
+        return "FFFF9FFF";
       }
     }
 
@@ -110,4 +108,3 @@ const handler = (data) => {
     autoleaders(data);
   } else console.log("Paquete no manejado" + data);
 };
-
