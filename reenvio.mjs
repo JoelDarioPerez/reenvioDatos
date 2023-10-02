@@ -5,11 +5,6 @@ export const handler = (data) => {
     newPackage.header = divided[0];
     newPackage.imei = divided[1];
 
-    let imei = (newPackage) => {
-      if (newPackage.imei === "013227009650882") {
-        return "013226004207938";
-      } else return newPackage.imei;
-    };
     newPackage.commmandType = divided[2];
     newPackage.eventCode = divided[3];
     newPackage.lat = parseFloat(divided[4]);
