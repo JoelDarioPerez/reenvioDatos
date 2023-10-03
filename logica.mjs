@@ -8,11 +8,11 @@ export const handler = (data) => {
   const traccarResult = traccar(data);
 
   let protocolType;
-  if (data[0] === "$$") {
+  if (data[0][0] === "$") {
     protocolType = "meitrack";
-  } else if (data[0] === "*") {
+  } else if (data[0][0] === "*") {
     protocolType = "autoleaders";
-  } else if (data[0] === "P") {
+  } else if (data[0][0] === "P") {
     protocolType = "traccar";
   } else {
     return console.log("Protocolo desconocido");
