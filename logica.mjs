@@ -1,43 +1,37 @@
 // logica.mjs
-
-import { traccar, meitrack, autoleaders } from "./protocolos.mjs";
+// logica.mjs
+import * as protocolos from "./protocolos.mjs";
 
 export const handler = (data) => {
-  const meitrackResult = meitrack(data);
-  const autoleadersResult = autoleaders(data);
-  const traccarResult = traccar(data);
-
   let protocolType;
-  if (data[0][0] === "$") {
+  if (data[0] === "$" && data[1] === "$") {
     protocolType = "meitrack";
-  } else if (data[0][0] === "*") {
+  } else if (data[0] === "*") {
     protocolType = "autoleaders";
-  } else if (data[0][0] === "P") {
+  } else if (data[0] === "P") {
     protocolType = "traccar";
   } else {
-    return console.log("Protocolo desconocido");
+    console.log("Protocolo desconocido");
+    return; // Salir de la función si el protocolo es desconocido
   }
 
   try {
-    if (data === null || data === undefined) {
-      return null;
-    } else {
-      switch (protocolType) {
-        case "meitrack":
-          meitrackResult;
-          break;
-        case "autoleaders":
-          autoleadersResult;
-          break;
-        case "traccar":
-          traccarResult;
-          break;
-      }
+    switch (protocolType) {
+      case "meitrack":
+        const meitrackResult = protocolos.meitrack(data);
+        // Resto del procesamiento para el protocolo Meitrack
+        break;
+      case "autoleaders":
+        const autoleadersResult = protocolos.autoleaders(data);
+        // Resto del procesamiento para el protocolo Autoleaders
+        break;
+      case "traccar":
+        const traccarResult = protocolos.traccar(data);
+        // Resto del procesamiento para el protocolo Traccar
+        break;
     }
   } catch (e) {
     console.log(e);
-    return console.log("Error en el protocolo");
+    console.log("Error en el protocolo");
   }
 };
-
-export default handler;
