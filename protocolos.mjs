@@ -188,6 +188,5 @@ export const autoleaders = (data) => {
   paquete.date = paqueteSplit[11];
   paquete.status = paqueteSplit[12];
 
-  console.log(paquete + "paquete autoleaders");
-  return paquete;
+  console.log("paquete autoleaders");
 };
