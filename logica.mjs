@@ -2,8 +2,6 @@
 // logica.mjs
 import * as protocolos from "./protocolos.mjs";
 import * as net from "net";
-import * as dotenv from "dotenv";
-dotenv.config();
 
 const WANWAY = "hwc9760.gpsog.com";
 const WWPORT = "9760";
