@@ -2,9 +2,11 @@
 // logica.mjs
 import * as protocolos from "./protocolos.mjs";
 import * as net from "net";
+import * as dotenv from "dotenv";
+dotenv.config();
 
-const WANWAY = "hwc9760.gpsog.com";
-const WWPORT = 9760;
+const WANWAY = process.env.WANWAY;
+const WWPORT = process.env.WWPORT;
 
 export const handler = (client, data) => {
   let protocolType;
