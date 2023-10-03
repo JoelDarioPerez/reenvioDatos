@@ -155,7 +155,7 @@ export const meitrack = (data) => {
       newPackage.directionLat,
       longitud(),
       newPackage.directionLong,
-      (newPackage.speed / 1.852).toFixed(2).toString().padStart(7, "0"),
+      (newPackage.speed / 1.852).toFixed(2).toString().padStart(6, "0"),
       newPackage.direction.toString().padStart(3, "0"),
       fecha(),
       accStatus(),
