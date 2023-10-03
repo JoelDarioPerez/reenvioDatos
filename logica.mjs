@@ -1,4 +1,5 @@
 import { traccar, meitrack, autoleaders } from "./protocolos.mjs";
+import data from "./servidor.mjs";
 
 const meitrackResult = meitrack(data);
 const autoleadersResult = autoleaders(data);
