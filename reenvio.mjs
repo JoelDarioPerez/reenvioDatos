@@ -4,7 +4,6 @@ export const handler = (data) => {
     let newPackage = {};
     newPackage.header = divided[0];
     newPackage.imei = divided[1];
-
     newPackage.commmandType = divided[2];
     newPackage.eventCode = divided[3];
     newPackage.lat = parseFloat(divided[4]);

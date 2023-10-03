@@ -4,8 +4,7 @@ const meitrackResult = meitrack(data);
 const autoleadersResult = autoleaders(data);
 const traccarResult = traccar(data);
 
-
-let handler = (data) => {
+export const handler = (data) => {
   if (data[0] === "$") {
     try {
       meitrackResult;
