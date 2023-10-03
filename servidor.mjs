@@ -49,6 +49,9 @@ function gpsTrackerServer(host, port) {
 
       // Ejemplo: procesar los datos recibidos y enviar una respuesta al cliente
       const response = "Datos procesados correctamente";
+      console.log("Datos a enviar:", data); // Agregar esta línea
+      client.write(data.toString()); // Convertir data a cadena de texto
+
       clientSocket.write(response);
     });
 
