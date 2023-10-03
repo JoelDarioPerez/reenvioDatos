@@ -35,7 +35,7 @@ export const handler = (data) => {
     }
   } catch (e) {
     console.log(e);
-    return null;
+    return console.log("Error en el protocolo");
   }
 };
 export default handler;
