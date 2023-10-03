@@ -155,7 +155,7 @@ export const meitrack = (data) => {
       newPackage.directionLat,
       longitud(),
       newPackage.directionLong,
-      (newPackage.speed / 1.852).toFixed(2).padStart(3, "0"),
+      (newPackage.speed / 1.852).padStart(3, "0").toFixed(2),
       newPackage.direction.padStart(3, "0"),
       fecha(),
       accStatus(),
@@ -168,7 +168,7 @@ export const meitrack = (data) => {
   }
 
   let send = St901Package(data);
-  console.log(send + "paquete meitrack");
+  console.log(send + " paquete meitrack");
   return send;
 };
 export const autoleaders = (data) => {
