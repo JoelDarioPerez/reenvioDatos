@@ -12,8 +12,7 @@ if (data[0] === "$") {
 } else if (data[0] === "P") {
   protocolType = "traccar";
 } else {
-  console.log("Protocolo desconocido");
-  return null;
+  return console.log("Protocolo desconocido");
 }
 
 export const handler = (data) => {
