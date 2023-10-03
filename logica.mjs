@@ -4,27 +4,33 @@ const meitrackResult = meitrack(data);
 const autoleadersResult = autoleaders(data);
 const traccarResult = traccar(data);
 
+let protocolType;
+if (data[0] === "$") {
+  protocolType = "meitrack";
+} else if (data[0] === "*") {
+  protocolType = "autoleaders";
+} else if (data[0] === "P") {
+  protocolType = "traccar";
+} else {
+  console.log("Protocolo desconocido");
+  return null;
+}
+
 export const handler = (data) => {
   try {
     if (data === null || data === undefined) {
       return null;
-    } else if (data[0] === "$") {
-      try {
-        meitrackResult;
-      } catch (e) {
-        console.log(e);
-      }
-    } else if (data[0] === "*") {
-      try {
-        autoleadersResult;
-      } catch (e) {
-        console.log(e);
-      }
-    } else if (data[0] === "P") {
-      try {
-        traccarResult;
-      } catch (e) {
-        console.log(e);
+    } else {
+      switch (protocolType) {
+        case "meitrack":
+          meitrackResult;
+          break;
+        case "autoleaders":
+          autoleadersResult;
+          break;
+        case "traccar":
+          traccarResult;
+          break;
       }
     }
   } catch (e) {

@@ -1,3 +1,5 @@
+//servidor.mjs
+
 import { handler } from "./logica.mjs"; // Cambia la extensión a .mjs
 import net from "net";
 // Función para enviar los datos a través de netcat

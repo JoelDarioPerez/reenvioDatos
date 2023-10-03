@@ -1,3 +1,5 @@
+//protocolos.mjs
+
 export const traccar = (data) => {
   const valores = {};
   const regex = /(?:\?|&)([^&=]+)=([^&]+)/g; // Expresión regular para buscar pares clave-valor
