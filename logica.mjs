@@ -8,7 +8,7 @@ export const handler = (data) => {
   const traccarResult = traccar(data);
 
   let protocolType;
-  if (data[0] === "$") {
+  if (data[0] === "$$") {
     protocolType = "meitrack";
   } else if (data[0] === "*") {
     protocolType = "autoleaders";
