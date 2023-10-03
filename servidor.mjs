@@ -1,38 +1,7 @@
-//servidor.mjs
+// servidor.mjs
+import * as net from "net";
+import { handler } from "./logica.mjs";
 
-import { handler } from "./logica.mjs"; // Cambia la extensión a .mjs
-import net from "net";
-// Función para enviar los datos a través de netcat
-function sendViaNetcat(data) {
-  const host = "hwc9760.gpsog.com";
-  const port = 9760;
-
-  // Creamos el cliente TCP
-  const client = net.connect(port, host, () => {
-    console.log(`Conectado al servidor: ${host}:${port}`);
-    // Enviamos los datos a través del socket del cliente TCP
-    client.write(data);
-  });
-
-  // Capturamos los datos recibidos del servidor remoto
-  client.on("data", (data) => {
-    console.log(`Datos recibidos del servidor remoto: ${data}`);
-    handler(data);
-    // Aquí puedes realizar alguna acción con los datos recibidos si lo deseas
-  });
-
-  // Capturamos el evento de cierre de la conexión
-  client.on("end", () => {
-    console.log("Conexión cerrada por el servidor remoto.");
-  });
-
-  // Capturamos el evento de error en la conexión
-  client.on("error", (err) => {
-    console.error(`Error en la conexión al servidor: ${err}`);
-  });
-}
-
-// Creamos el servidor TCP para recibir los datos del GPS
 function gpsTrackerServer(host, port) {
   const server = net.createServer((clientSocket) => {
     console.log(
@@ -41,18 +10,9 @@ function gpsTrackerServer(host, port) {
 
     clientSocket.on("data", (data) => {
       // Procesamos los datos recibidos y obtenemos la respuesta
-      const processedData = handler(data.toString());
-
-      console.log(`Datos recibidos: ${data.toString()}`);
-      // Enviamos los datos procesados a través de netcat
-      sendViaNetcat(processedData);
-
-      // Ejemplo: procesar los datos recibidos y enviar una respuesta al cliente
-      const response = "Datos procesados correctamente";
-      console.log("Datos a enviar:", data); // Agregar esta línea
-      client.write(data.toString()); // Convertir data a cadena de texto
-
-      clientSocket.write(response);
+      handler(clientSocket, data.toString()); // Pasamos 'clientSocket' como argumento
+      // ...
+      // Aquí puedes realizar alguna acción con los datos recibidos si lo deseas
     });
 
     clientSocket.on("end", () => {
@@ -73,7 +33,6 @@ function gpsTrackerServer(host, port) {
   });
 }
 
-// Ejecutamos la función del servidor
 const host = "0.0.0.0"; // Escucha en todas las interfaces
 const port = 9700; // Puerto del servidor TCP
 gpsTrackerServer(host, port);
