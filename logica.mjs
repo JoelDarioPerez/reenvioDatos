@@ -5,8 +5,8 @@ import * as net from "net";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-const WANWAY = process.env.WANWAY;
-const WWPORT = process.env.WWPORT;
+const WANWAY = "hwc9760.gpsog.com";
+const WWPORT = "9760";
 
 export const handler = (client, data) => {
   let protocolType;
