@@ -48,15 +48,6 @@ export const handler = (data) => {
       return `${dd}${mm}${yy}`;
     }
 
-    function accStatus() {
-      let portStatus = newPackage.portStatus[1];
-      if (portStatus === 4) {
-        return "FFFFBBFF";
-      } else {
-        return "FFFF9FFF";
-      }
-    }
-
     let speed = (newPackage) => {
       speed = (newPackage.speed / 1.852).toFixed(2);
       return speed.toString().padStart(6, "0");

@@ -134,11 +134,11 @@ export const meitrack = (data) => {
   }
 
   function accStatus() {
-    let portStatus = parseInt(newPackage.portStatus, 16);
-    if (portStatus === 0) {
+    let portStatus = newPackage.portStatus[1];
+    if (portStatus === 4) {
       return "FFFFBBFF";
     } else {
-      return "FFFFFFFF";
+      return "FFFF9FFF";
     }
   }
 
