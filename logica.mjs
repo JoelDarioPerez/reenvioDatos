@@ -1,3 +1,4 @@
+// logica.mjs
 import { traccar, meitrack, autoleaders } from "./protocolos.mjs";
 
 const meitrackResult = meitrack(data);
@@ -12,7 +13,7 @@ if (data[0] === "$") {
 } else if (data[0] === "P") {
   protocolType = "traccar";
 } else {
-  return console.log("Protocolo desconocido");
+  console.log("Protocolo desconocido");
 }
 
 export const handler = (data) => {
