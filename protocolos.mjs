@@ -168,7 +168,7 @@ export const meitrack = (data) => {
   }
 
   let send = St901Package(data);
-  console.log(newPackage.AnalogImputs + newPackage.portStatus);
+  console.log(data.toString());
   return send;
 };
 export const autoleaders = (data) => {
