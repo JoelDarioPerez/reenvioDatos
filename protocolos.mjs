@@ -137,9 +137,9 @@ export const meitrack = (data) => {
 
   function accStatus() {
     if ((newPackage.portStatus = "0000")) {
-      return "FFFF9FFF";
-    } else {
       return "FFFFBBFF";
+    } else {
+      return "FFFF9FFF";
     }
   }
 
