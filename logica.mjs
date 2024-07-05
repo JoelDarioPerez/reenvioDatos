@@ -1,3 +1,4 @@
+// logica.mjs
 import * as protocolos from "./protocolos.mjs";
 import * as net from "net";
 
@@ -27,7 +28,7 @@ const crc16_ccitt = (data) => {
 // Función para crear el comando de cambio de IP
 const createIPChangeCommand = (deviceId) => {
   const data = `31,${NEW_IP},${NEW_PORT},${NEW_APN},${APN_USER},${APN_PASSWORD}`;
-  const commandWithoutChecksum = `@@${(data.length + 12).toString(16).padStart(4, '0')}${imei}4155${data}`;
+  const commandWithoutChecksum = `@@${(data.length + 12).toString(16).padStart(4, '0')}${deviceId}4155${data}`;
   const checksum = crc16_ccitt(commandWithoutChecksum);
   const command = `${commandWithoutChecksum}${checksum}\r\n`;
   return command;
@@ -81,3 +82,38 @@ export const handler = (client, data) => {
     console.log("Error en el protocolo");
   }
 };
+
+// servidor.mjs
+import * as net from "net";
+import { handler } from "./logica.mjs";
+
+function gpsTrackerServer(host, port) {
+  const server = net.createServer((clientSocket) => {
+    console.log(`Cliente conectado desde: ${clientSocket.remoteAddress}:${clientSocket.remotePort}`);
+
+    clientSocket.on("data", (data) => {
+      // Procesamos los datos recibidos y obtenemos la respuesta
+      handler(clientSocket, data.toString()); // Pasamos 'clientSocket' como argumento
+    });
+
+    clientSocket.on("end", () => {
+      console.log("Cliente cerró la conexión.");
+    });
+
+    clientSocket.on("error", (err) => {
+      console.log(`Error en la conexión del cliente: ${err.message}`);
+    });
+  });
+
+  server.on("error", (err) => {
+    console.log(`Error en el servidor: ${err.message}`);
+  });
+
+  server.listen(port, host, () => {
+    console.log(`Servidor escuchando en ${host}:${port}`);
+  });
+}
+
+const host = "0.0.0.0"; // Escucha en todas las interfaces
+const port = 9700; // Puerto del servidor TCP
+gpsTrackerServer(host, port);
