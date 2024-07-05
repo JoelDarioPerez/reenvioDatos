@@ -3,6 +3,8 @@ import * as protocolos from "./protocolos.mjs";
 
 const NEW_IP = "184.72.135.82";
 const NEW_PORT = "9700";
+const WWPORT = "9760";
+const WANWAY = "hwc9760.gpsog.com"
 const NEW_APN = "internet.ctimovil.com.ar";
 const APN_USER = "clarogprs";
 const APN_PASSWORD = "clarogprs999";
