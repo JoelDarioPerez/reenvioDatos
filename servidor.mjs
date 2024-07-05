@@ -1,17 +1,13 @@
-// servidor.mjs
 import * as net from "net";
 import { handler } from "./logica.mjs";
 
 function gpsTrackerServer(host, port) {
   const server = net.createServer((clientSocket) => {
-    console.log(
-      `Cliente conectado desde: ${clientSocket.remoteAddress}:${clientSocket.remotePort}`
-    );
+    console.log(`Cliente conectado desde: ${clientSocket.remoteAddress}:${clientSocket.remotePort}`);
 
     clientSocket.on("data", (data) => {
       // Procesamos los datos recibidos y obtenemos la respuesta
       handler(clientSocket, data.toString()); // Pasamos 'clientSocket' como argumento
-      // ...
       // Aquí puedes realizar alguna acción con los datos recibidos si lo deseas
     });
 

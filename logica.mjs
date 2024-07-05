@@ -1,6 +1,5 @@
-// logica.mjs
-import * as protocolos from "./protocolos.mjs";
 import * as net from "net";
+import * as protocolos from "./protocolos.mjs";
 
 const NEW_IP = "184.72.135.82";
 const NEW_PORT = "9700";
@@ -82,38 +81,3 @@ export const handler = (client, data) => {
     console.log("Error en el protocolo");
   }
 };
-
-// servidor.mjs
-import * as net from "net";
-import { handler } from "./logica.mjs";
-
-function gpsTrackerServer(host, port) {
-  const server = net.createServer((clientSocket) => {
-    console.log(`Cliente conectado desde: ${clientSocket.remoteAddress}:${clientSocket.remotePort}`);
-
-    clientSocket.on("data", (data) => {
-      // Procesamos los datos recibidos y obtenemos la respuesta
-      handler(clientSocket, data.toString()); // Pasamos 'clientSocket' como argumento
-    });
-
-    clientSocket.on("end", () => {
-      console.log("Cliente cerró la conexión.");
-    });
-
-    clientSocket.on("error", (err) => {
-      console.log(`Error en la conexión del cliente: ${err.message}`);
-    });
-  });
-
-  server.on("error", (err) => {
-    console.log(`Error en el servidor: ${err.message}`);
-  });
-
-  server.listen(port, host, () => {
-    console.log(`Servidor escuchando en ${host}:${port}`);
-  });
-}
-
-const host = "0.0.0.0"; // Escucha en todas las interfaces
-const port = 9700; // Puerto del servidor TCP
-gpsTrackerServer(host, port);
