@@ -7,7 +7,7 @@ const WWPORT = "9760";
 const WANWAY = "hwc9760.gpsog.com"
 const NEW_APN = "internet.ctimovil.com.ar";
 const APN_USER = "clarogprs";
-const APN_PASSWORD = "clarogprs999";
+const APN_PASSWORD = "clarogprs999,";
 
 // Función para calcular el checksum CRC-CCITT
 const crc16_ccitt = (data) => {
